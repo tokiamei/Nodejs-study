@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin="anonymous"
+      src="https://cdn.bootcdn.net/ajax/libs/axios/1.0.0-alpha.1/axios.js"
+    ></script>
+  </head>
+  <body>
+    <button>axios GET</button>
+    <button>axios POST</button>
+
+    <script>
+      axios.defaults.baseURL = "http://127.0.0.1:8080";
+      const btn = document.querySelectorAll("button");
+      btn[0].addEventListener("click", () => {
+        // GET 请求
+        axios
+          .get("/user", {
+            // url
+            params: {
+              idd: 100,
+              // vip: 7,
+            },
+            // 请求头信息
+            headers: {
+              name: "bluekk",
+              age: 20000,
+            },
+          })
+          .then((value) => {
+            console.log(value);
+          });
+      });
+
+      btn[1].onclick = () => {
+        axios.post(
+          "/user",
+          {
+            data: {
+              username: "aa",
+              password: "aa",
+            },
+          },
+          {
+            params: {
+              id: 200,
+              vip: 100,
+            },
+            headers: {
+              height: 3,
+              weight: 300,
+            },
+          }
+        );
+      };
+    </script>
+  </body>
+</html>
